@@ -1,2 +1,2 @@
 # Zlim
-A mobile desktop wiki app inspired by Zim
+A mobile wiki app inspired by Zim
