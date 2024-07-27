@@ -6,7 +6,7 @@ import { ISettings } from './ISettings';
 const KEY_OPTIONS = 'options';
 
 export class Settings {
-	public async storeTestData(): Promise<boolean> {
+	public async testStoreTestData(): Promise<boolean> {
 		let settings:ISettings = {
 			notebooks: [],
 		}
@@ -23,18 +23,33 @@ export class Settings {
 		return true;
 	}
 
+	public async testRemoveSettings(): Promise<boolean> {
+		await SecureStore.deleteItemAsync(KEY_OPTIONS);
+		return true;
+	}
+
+	public async createAndStoreEmptySettings(): Promise<boolean> {
+		let settings:ISettings = {
+			notebooks: [],
+		}
+
+		await SecureStore.setItemAsync(KEY_OPTIONS, JSON.stringify(settings));
+		return true;
+	}
+
 
 	async getSettings(): Promise<ISettings> {
+		await this.testRemoveSettings();
+
 		let settingsString = await SecureStore.getItemAsync(KEY_OPTIONS);
 	
 		if (!settingsString) {
 			//Not created yet or deleted
-			await this.storeTestData(); //TODO
+			await this.createAndStoreEmptySettings(); //TODO
 		}
 
 		settingsString = await SecureStore.getItemAsync(KEY_OPTIONS);
 
-		//OPTIONS FOUND
 		let settings:ISettings = JSON.parse(settingsString) as ISettings;
 
 		return settings;

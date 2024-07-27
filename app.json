@@ -2,6 +2,7 @@
   "expo": {
     "name": "Zlim",
     "slug": "Zlim",
+	"scheme": "zlim-scheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,24 +26,12 @@
       "package": "com.gerhardschreurs.zlim"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+	  "bundler": "metro"
     },
     "plugins": [
-      "expo-secure-store"
-	// ,
-    //   [
-    //     "expo-build-properties",
-    //     {
-    //       "android": {
-    //         "compileSdkVersion": 34,
-    //         "targetSdkVersion": 34,
-    //         "buildToolsVersion": "34.0.0"
-    //       },
-    //       "ios": {
-    //         "deploymentTarget": "13.4"
-    //       }
-    //     }
-    //   ]
+      "expo-secure-store",
+      "expo-router"
     ]
   }
 }
