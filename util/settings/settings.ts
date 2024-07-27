@@ -2,7 +2,6 @@ import * as SecureStore from 'expo-secure-store';
 import { INotebook } from './INotebook';
 import { ISettings } from './ISettings';
 
-
 const KEY_OPTIONS = 'options';
 
 export class Settings {
@@ -37,6 +36,17 @@ export class Settings {
 		return true;
 	}
 
+	async checkPath(path:string): Promise<boolean> {
+		// try {
+		// 	const statResult = await RNFS.stat(path);
+		// 	return statResult.isDirectory();
+		// } catch (error) {
+		// 	console.error('Error checking path:', error);
+		// 	return false;
+		// }
+
+		return true;
+	}
 
 	async getSettings(): Promise<ISettings> {
 		await this.testRemoveSettings();
