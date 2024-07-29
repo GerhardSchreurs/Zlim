@@ -1,6 +1,7 @@
 import * as SecureStore from 'expo-secure-store';
 import { INotebook } from './INotebook';
 import { ISettings } from './ISettings';
+import * as FileSystem from 'expo-file-system'; 
 
 const KEY_OPTIONS = 'options';
 
@@ -37,13 +38,11 @@ export class Settings {
 	}
 
 	async checkPath(path:string): Promise<boolean> {
-		// try {
-		// 	const statResult = await RNFS.stat(path);
-		// 	return statResult.isDirectory();
-		// } catch (error) {
-		// 	console.error('Error checking path:', error);
-		// 	return false;
-		// }
+		let fileInfo = await FileSystem.getInfoAsync(path);
+
+		if (!fileInfo.isDirectory) {
+			return false;
+		}
 
 		return true;
 	}
