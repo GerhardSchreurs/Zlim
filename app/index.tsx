@@ -17,9 +17,15 @@ export const test = async() => {
 
 	// return result;
 
-	let settingsFetcher = new Settings();
-	let settings = await settingsFetcher.getSettings();
-	let bla = '';
+	// let settingsFetcher = new Settings();
+	// let settings = await settingsFetcher.getSettings();
+	// let bla = '';
+
+	console.log('here');
+
+	alert('hello');
+
+	return true;
 }
 
 export const browse = async() => {
